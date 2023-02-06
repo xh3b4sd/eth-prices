@@ -1,27 +1,29 @@
 package main
 
 import (
+	"bytes"
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
-	"os"
 	"sort"
 	"strconv"
 	"time"
 
 	"github.com/xh3b4sd/budget/v3"
 	"github.com/xh3b4sd/budget/v3/pkg/breaker"
+	"github.com/xh3b4sd/eth-prices/pkg/apicliaws"
 	"github.com/xh3b4sd/framer"
 )
 
 const (
 	apifmt = "https://api.coingecko.com/api/v3/coins/ethereum/history?date=%s&localization=false"
 	dayzer = "2020-12-01T00:00:00Z"
-	reqlim = 50
-	rewfil = "prices.csv"
+	bucnam = "chiron-data-collector"
+	filpat = "eth/prices.csv"
+	reqlim = 5
 )
 
 type csvrow struct {
@@ -44,24 +46,27 @@ type resstrdatpri struct {
 func main() {
 	var err error
 
-	var rea *os.File
+	var cli *apicliaws.AWS
 	{
-		rea, err = os.Open(rewfil)
-		if err != nil {
-			log.Fatal(err)
+		cli = apicliaws.New()
+	}
+
+	var byt []byte
+	{
+		byt, err = cli.Download(bucnam, filpat)
+		if apicliaws.IsNotFound(err) {
+			// fall through
+		} else if err != nil {
+			panic(err)
 		}
 	}
 
 	var row [][]string
 	{
-		row, err = csv.NewReader(rea).ReadAll()
+		row, err = csv.NewReader(bytes.NewReader(byt)).ReadAll()
 		if err != nil {
 			log.Fatal(err)
 		}
-	}
-
-	{
-		rea.Close()
 	}
 
 	cur := map[time.Time]float64{}
@@ -169,22 +174,22 @@ func main() {
 		res = append(res, []string{x.Dat.Format(time.RFC3339), fmt.Sprintf("%.16f", x.APR)})
 	}
 
-	var wri *os.File
+	var wri *bytes.Buffer
 	{
-		wri, err = os.OpenFile(rewfil, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-
-	{
-		defer wri.Close()
+		wri = bytes.NewBufferString("")
 	}
 
 	{
 		err = csv.NewWriter(wri).WriteAll(res)
 		if err != nil {
 			log.Fatal(err)
+		}
+	}
+
+	{
+		err = cli.Upload(bucnam, filpat, *bytes.NewReader(wri.Bytes()))
+		if err != nil {
+			panic(err)
 		}
 	}
 }
