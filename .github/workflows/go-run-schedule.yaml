@@ -21,7 +21,7 @@ jobs:
       - name: "Update Prices CSV"
         env: 
           AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
-          AWS_ACCESS_SECRET: "${{ secrets.AWS_ACCESS_SECRET }}"
+          AWS_SECRET_KEY: "${{ secrets.AWS_SECRET_KEY }}"
           AWS_REGION: "us-east-1"
         run: |
           go run main.go
