@@ -19,7 +19,7 @@ jobs:
           go-version: "1.19.2"
 
       - name: "Update Prices CSV"
-        env: 
+        env:
           AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
           AWS_SECRET_KEY: "${{ secrets.AWS_SECRET_KEY }}"
           AWS_REGION: "us-east-1"
