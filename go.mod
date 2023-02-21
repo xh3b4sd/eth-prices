@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/aws/aws-sdk-go-v2 v1.17.5
 	github.com/aws/aws-sdk-go-v2/config v1.18.14
-	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.53
+	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.54
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.30.4
 	github.com/xh3b4sd/budget/v3 v3.3.0
 	github.com/xh3b4sd/framer v0.4.0
