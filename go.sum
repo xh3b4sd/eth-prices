@@ -49,8 +49,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/xh3b4sd/budget/v3 v3.3.0 h1:/mg11kyDuYHI4LOT8hctLsVnK6ZeGN+/Rw5wzZ/Zhlk=
 github.com/xh3b4sd/budget/v3 v3.3.0/go.mod h1:epHdjvXVpg5PE63RcBirhgY8D/vVa5dbXkDjQ/ycT40=
-github.com/xh3b4sd/framer v0.4.0 h1:p3xOz9i45rJIuNUog+o30iMOhzzRac091D1zlRzmXMU=
-github.com/xh3b4sd/framer v0.4.0/go.mod h1:O9mbD97ERLQJ3d8gO7Sq4Hy9WNDoYIT43Z/okh/j+UU=
+github.com/xh3b4sd/framer v0.4.1 h1:GJOD8wfBOOb+kWWPN/XLsYHkmfqaRb1UriBKkA0Uq8Y=
+github.com/xh3b4sd/framer v0.4.1/go.mod h1:GQIfCHoxexuTICSOue0iON1kQ+TDScTmMUo9elu6aBY=
 github.com/xh3b4sd/tracer v0.6.0 h1:WMrNsHcWUaCAqMWXogD7IRKC8F6A9Ar4pDF9WcdZsX0=
 github.com/xh3b4sd/tracer v0.6.0/go.mod h1:U5gTjJXdszOlcBmr94v6zDrV8sY6d53thFUkPNZQ4Xk=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=

@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.55
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.30.5
 	github.com/xh3b4sd/budget/v3 v3.3.0
-	github.com/xh3b4sd/framer v0.4.0
+	github.com/xh3b4sd/framer v0.4.1
 )
 
 require (
